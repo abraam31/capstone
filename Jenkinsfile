@@ -18,8 +18,10 @@ pipeline {
                     echo 'logging to dockerhub '
                     sh """ docker login --username ${docker_pass} --password ${docker_pass} """
                 }
-                docker.withRegistry('https://hub.docker.com/', 'dockerhub') {
-                      docker.build('capstone').push('latest')
+                script {
+                    docker.withRegistry('https://hub.docker.com/', 'dockerhub') {
+                          docker.build('capstone').push('latest')
+                    }
                 }
             }
         }        
