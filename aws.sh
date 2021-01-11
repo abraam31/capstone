@@ -1,5 +1,6 @@
 #!/bin/bash
-
+cd ~
+pwd 
 AWS_ACCESS_KEY_ID_VALUE=$1
 AWS_SECRET_ACCESS_KEY_VALUE=$2
 
