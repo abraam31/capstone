@@ -16,7 +16,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'docker_pass', usernameVariable: 'docker_user')]) {
                     echo 'logging to dockerhub '
-                    sh """ docker login --username ${docker_users} --password ${docker_pass} """
+                    sh """ docker login --username ${docker_user} --password ${docker_pass} """
                 }
                 script {
                     docker.withRegistry('https://hub.docker.com/', 'dockerhub') {
