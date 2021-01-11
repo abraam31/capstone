@@ -7,7 +7,7 @@ pipeline {
                     echo 'Generating AWS S3 Credentials...'
                     sh """ pwd 
                           ./aws.sh ${aws_access_key_id} ${aws_secret_access_key}
-                          cat .aws/credentials """
+                          cat ~/.aws/credentials """
                 }
             }
         }
