@@ -11,5 +11,17 @@ pipeline {
                 }
             }
         }
+        
+        stage('docker build'){
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'docker_pass', usernameVariable: 'docker_user')]) {
+                    echo 'logging to dockerhub '
+                    sh """ docker login --username ${docker_pass} --password ${docker_pass} """
+                }
+                docker.withRegistry('https://hub.docker.com/', 'dockerhub') {
+                      docker.build('capstone').push('latest')
+                }
+            }
+        }        
     }
 }
