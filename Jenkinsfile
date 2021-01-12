@@ -33,12 +33,23 @@ pipeline {
             }
         } 
         
-        stage('getting the kubeconfig '){
+        stage('getting kubernetes context '){
             steps {
                 sh """ export PATH=$PATH:/usr/local/bin
                     /usr/local/bin/aws eks --region eu-west-1 update-kubeconfig --name capstone
                     kubectl get pods --all-namespaces
                     kubectl get nodes
+                """
+            }
+        } 
+        
+        stage('Deploying on kubernetes '){
+            steps {
+                sh """ export PATH=$PATH:/usr/local/bin
+                    kubectl apply -f deployment.yml
+                    kubectl get svc
+                    kubectl get pods
+                    kubectl descrive svc my-service
                 """
             }
         } 
