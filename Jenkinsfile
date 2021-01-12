@@ -74,6 +74,7 @@ pipeline {
 	post {
 		always {
 		    sh """ rm -rf ~/.aws """
+		    cleanWs()
 		}
 	}
 }
