@@ -17,6 +17,10 @@ To deploy the application after building your docker image (supposing the presen
     
 ### List of files:
 Dockerfile: The file to build the docker image
+
 JenkinsFile: the file that jenkins auto detect and build pipeline
+
 deployment.yml: the deployment file on kubernetes cluster for both the deployment and the service exposed on loadbalancer
+
 aws.sh: bash script to autocreate the aws credentials.
+
