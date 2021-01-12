@@ -17,7 +17,6 @@ pipeline {
                     sh """ hadolint Dockerfile"""
                 }
             }
-        }
         
         stage('docker build'){
             steps {
