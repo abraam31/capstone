@@ -31,6 +31,15 @@ pipeline {
                     }
                 }
             }
-        }        
+        } 
+        
+        stage('getting the kubeconfig '){
+            steps {
+                sh """ aws eks --region eu-west-1 update-kubeconfig --name capstone
+                    kubectl get pods --all-namespaces
+                    kubectl get nodes
+                """
+            }
+        } 
     }
 }
