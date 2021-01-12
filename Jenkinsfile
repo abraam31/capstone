@@ -46,10 +46,11 @@ pipeline {
         stage('Deploying on kubernetes '){
             steps {
                 sh """ export PATH=$PATH:/usr/local/bin
+                    kubectl delete -f deployment.yml
                     kubectl apply -f deployment.yml
                     kubectl get svc
                     kubectl get pods
-                    kubectl descrive svc my-service
+                    kubectl describe svc my-service
                 """
             }
         } 
