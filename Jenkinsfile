@@ -11,6 +11,13 @@ pipeline {
                 }
             }
         }
+
+        stage('linting'){
+            steps {
+                    sh """ hadolint Dockerfile"""
+                }
+            }
+        }
         
         stage('docker build'){
             steps {
@@ -20,7 +27,7 @@ pipeline {
                 }
                 script {
                     docker.withRegistry('', 'dockerhub') {
-                          docker.build('abraam31/capstone').push('latest')
+                          docker.build('abraam31/capstone')
                     }
                 }
             }
