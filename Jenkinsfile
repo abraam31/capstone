@@ -35,7 +35,8 @@ pipeline {
         
         stage('getting the kubeconfig '){
             steps {
-                sh """ /usr/local/bin/aws eks --region eu-west-1 update-kubeconfig --name capstone
+                sh """ export PATH=$PATH:/usr/local/bin
+                    /usr/local/bin/aws eks --region eu-west-1 update-kubeconfig --name capstone
                     kubectl get pods --all-namespaces
                     kubectl get nodes
                 """
