@@ -14,7 +14,8 @@ pipeline {
 
         stage('linting'){
             steps {
-                    sh """ hadolint Dockerfile"""
+                // Ignoring the hadolint warning of not tagging Docker image with word latest
+                    sh """ hadolint --ignore DL3007 Dockerfile"""
                 }
             }
         
