@@ -42,7 +42,7 @@ pipeline {
                 }
                 script {
                     docker.withRegistry('', 'dockerhub') {
-                          docker.build('abraam31/capstone')
+                          docker.build('abraam31/capstone').push('latest')
                     }
                 }
             }
