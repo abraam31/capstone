@@ -61,8 +61,7 @@ pipeline {
         stage('Deploying on kubernetes '){
             steps {
                 sh """ export PATH=$PATH:/usr/local/bin
-                    kubectl delete -f deployment.yml
-                    kubectl apply -f deployment.yml
+                    kubectl rollout restart deployment/capstone
                     kubectl get svc
                     kubectl get pods
                     kubectl describe svc my-service
