@@ -26,7 +26,7 @@ pipeline {
                         publishHTML([allowMissing: false, 
                         alwaysLinkToLastBuild: false, 
                         keepAll: false, 
-                        reportDir: 'reports', 
+                        reportDir: '.', 
                         reportFiles: 'index.html', 
                         reportName: 'HTML Report', 
                         reportTitles: ''])                 
@@ -74,7 +74,6 @@ pipeline {
 	post {
 		always {
 		    sh """ rm -rf ~/.aws """
-			cleanWs ()
 		}
 	}
 }
