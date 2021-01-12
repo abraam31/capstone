@@ -24,3 +24,5 @@ deployment.yml: the deployment file on kubernetes cluster for both the deploymen
 
 aws.sh: bash script to autocreate the aws credentials.
 
+
+## Screenshots in the screenshots directory.
