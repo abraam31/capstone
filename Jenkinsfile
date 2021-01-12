@@ -18,7 +18,22 @@ pipeline {
                     sh """ hadolint --ignore DL3007 Dockerfile"""
                 }
             }
-        
+
+        stage('Testing html'){
+            steps {
+                    sh """ mkdir reports"""
+                    script {
+                        publishHTML([allowMissing: false, 
+                        alwaysLinkToLastBuild: false, 
+                        keepAll: false, 
+                        reportDir: 'reports', 
+                        reportFiles: 'index.html', 
+                        reportName: 'HTML Report', 
+                        reportTitles: ''])                 
+                    }
+                }
+            }
+            
         stage('docker build'){
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'docker_pass', usernameVariable: 'docker_user')]) {
@@ -55,4 +70,11 @@ pipeline {
             }
         } 
     }
+
+	post {
+		always {
+		    sh """ rm -rf ~/.aws """
+			cleanWs ()
+		}
+	}
 }
